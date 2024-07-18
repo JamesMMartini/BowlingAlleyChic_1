@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Bowling Alley Chic: Issue 1</title>
+  <script type="module" crossorigin src="./assets/page5-Dj2-Quae.js"></script>
+  <link rel="modulepreload" crossorigin href="./assets/VolumeNodeMaterial-CSXjMlTf.js">
+  <link rel="stylesheet" crossorigin href="./assets/page5style-BbJ8dGq5.css">
+</head>
+<body>
+	<div class="main-body">
+		<div class="header">
+			<h1>BOWLING ALLEY CHIC: ISSUE 1</h1>
+			<h3>CLUSTERED-DOT DITHERING</h3>
+			<a href="page4.html">
+				<button class="header-btn">
+					Page 4: Dispersed-Dot
+				</button>
+			</a>
+            <a href="page6.html">
+				<button class="header-btn">
+					Page 6: Rotating Matrices
+				</button>
+			</a>
+		</div>
+		<div class="row-left">
+			<div class="sub-row-left">
+				<h2>DOTS?</h2>
+
+				<p>
+					Remember the physical halftoning from earlier? That uses circular dots of different sizes instead of 
+					dots of different densities to indicate colors.
+				</p>
+				<p>
+					Luckily for us, we can more or less simulate dots of different sizes by just 
+					changing the matrix we're using.
+				</p>
+				<p>
+					I replaced the Bayer Matrix with a matrix from the <i>Digital Halftoning</i> book and 
+					now the dots cluster together at darker points and spread apart at lighter points.
+				</p>
+				<p>
+					This reduces the detail from the dispersed-dot method so if you want to use it, 
+					it's a perfectly viable method, but for digital purposes, there's no real reason to use it 
+					outside of its aesthetic function.
+				</p>
+			</div>
+		</div>
+        <div class="row-right">
+            <div class="sub-row-right">
+                <h2>DRUG STORE COWBOYS</h2>
+
+                <p>
+					I was at Hollywood Vintage in Northeast Portland and in their basement spotted these two studs mounted to the wall.
+				</p>
+				<p>
+					I tried grabbing a picture of them but there was some weird glare or glitch on my phone that created 
+					these little scratches protecting their modesty.
+				</p>
+				<p>
+					Conveniently this glitch is also a great way to show off the contrast and texture of the clustered-dot 
+					dithering.
+				</p>
+            </div>
+        </div>
+	</div>
+    <script id="vertexShader" type="x-shader/x-vertex">
+		varying vec2 vUv;
+
+		void main() {
+			vUv = uv;
+
+			gl_Position =   projectionMatrix * 
+							modelViewMatrix * 
+							vec4(position,1.0);
+		}
+	</script>
+	<script id="fragmentShader" type="x-shader/x-fragment">
+		uniform sampler2D texture1;
+
+		varying vec2 vUv;
+
+		void main() {
+			gl_FragColor = texture(texture1, vUv);
+		}
+	</script>
+</body>
+</html>

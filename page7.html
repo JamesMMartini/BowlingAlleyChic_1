@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Bowling Alley Chic: Issue 1</title>
+  <script type="module" crossorigin src="./assets/page7-BVvTrdVe.js"></script>
+  <link rel="modulepreload" crossorigin href="./assets/VolumeNodeMaterial-CSXjMlTf.js">
+  <link rel="modulepreload" crossorigin href="./assets/QuantizedDither-B5B4gs4j.js">
+  <link rel="stylesheet" crossorigin href="./assets/page5style-BbJ8dGq5.css">
+</head>
+<body>
+	<div class="main-body">
+		<div class="header">
+			<h1>BOWLING ALLEY CHIC: ISSUE 1</h1>
+			<h3>QUANTIZED DITHERING</h3>
+			<a href="page6.html">
+				<button class="header-btn">
+					Page 6: Rotating Matrices
+				</button>
+			</a>
+            <a href="page8.html">
+				<button class="header-btn">
+					Page 8: Back Cover
+				</button>
+			</a>
+		</div>
+		<div id="text" class="row-left">
+			<div class="sub-row-left">
+				<h2>KILL THE COLORS</h2>
+
+				<p>
+					Remember the quantization from last issue? Well typically color quantization is combined with some 
+					form of dithering (often bayer dithering) to blend between the colors. Basically, you get the color 
+					and offset it using a bayer matrix which creates a little bit of variation in the flatter tones to make 
+					for smoother color transitions.
+				</p>
+				<p>
+					I did that here with the page from the last issue to demonstrate what that looks like. Use the button to 
+					switch between the traditional quantization and my set color palette quantization!
+				</p>
+			</div>
+		</div>
+		<div class="row-right">
+			<div class="sub-row-right">
+				<a>
+					<button id="swapButton" type="button" class="body-btn">
+						Switch to Set Palette
+					</button>
+				</a>
+				
+			</div>
+		</div>
+	</div>
+	<script id="vertexShader" type="x-shader/x-vertex">
+		varying vec2 vUv;
+
+		void main() {
+			vUv = uv;
+
+			gl_Position =   projectionMatrix * 
+							modelViewMatrix * 
+							vec4(position,1.0);
+		}
+	</script>
+	<script id="fragmentShader" type="x-shader/x-fragment">
+		uniform sampler2D texture1;
+
+		varying vec2 vUv;
+
+		void main() {
+			gl_FragColor = texture(texture1, vUv);
+		}
+	</script>
+</body>
+</html>

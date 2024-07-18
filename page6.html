@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Bowling Alley Chic: Issue 1</title>
+  <script type="module" crossorigin src="./assets/page6-fEqN3Mz5.js"></script>
+  <link rel="modulepreload" crossorigin href="./assets/VolumeNodeMaterial-CSXjMlTf.js">
+  <link rel="stylesheet" crossorigin href="./assets/page5style-BbJ8dGq5.css">
+</head>
+<body>
+	<div class="main-body">
+		<div class="header">
+			<h1>BOWLING ALLEY CHIC: ISSUE 1</h1>
+			<h3>ROTATING MATRICES</h3>
+			<a href="page5.html">
+				<button class="header-btn">
+					Page 5: Clustered-Dot
+				</button>
+			</a>
+            <a href="page7.html">
+				<button class="header-btn">
+					Page 7: Quantization
+				</button>
+			</a>
+		</div>
+		<div class="row-left">
+			<div class="sub-row-left">
+				<h2>JUST LIKE REAL LIFE</h2>
+
+				<p>
+					In traditional halftoning screens for printers, the screen is rotated at a 45 degree angle to make the 
+					dot pattern look a little bit better and a little less parallel with the page.
+				</p>
+				<p>
+					I tried to do that here and it, uh, well, sort of worked.
+				</p>
+				<p>
+					The dither pattern is rotated at 45 degrees, but I struggled to find a good threshold matrix. 
+					I did my best to find one that looked good but really was not able to manage well.
+				</p>
+				<p>
+					The non-rotated matrix actually somehow looks <i>more</i> rotated than the rotated one. I'm not sure if my method was 
+					different than the book or not, but the unrotated matrix actually looks pretty good.
+				</p>
+			</div>
+		</div>
+        <div class="row-right">
+            <div class="sub-row-right">
+                <h2>UUUHHHHHH</h2>
+
+				<a>
+					<button id="swapButton" type="button" class="body-btn">
+						Switch to Non-Rotated
+					</button>
+				</a>
+
+                <p>
+					This is the beautiful T-Mobile Park in Seattle, home of the universally beloved Seattle Mariners!
+				</p>
+				<p>
+					What? You couldn't tell? Well as much as I wanted to depict the beauty of my favorite sports team 
+					the clustered-dot method is just not good with high-detail images.
+				</p>
+				<p>
+					I'm not joking when I say that I tried every single picture I took in the PNW and the only one 
+					that really looked good with this effect was the one of two nude cartoon cowboys embracing.
+				</p>
+				<p>
+					Anyways, #goms
+				</p>
+            </div>
+        </div>
+	</div>
+    <script id="vertexShader" type="x-shader/x-vertex">
+		varying vec2 vUv;
+
+		void main() {
+			vUv = uv;
+
+			gl_Position =   projectionMatrix * 
+							modelViewMatrix * 
+							vec4(position,1.0);
+		}
+	</script>
+	<script id="fragmentShader" type="x-shader/x-fragment">
+		uniform sampler2D texture1;
+
+		varying vec2 vUv;
+
+		void main() {
+			gl_FragColor = texture(texture1, vUv);
+		}
+	</script>
+</body>
+</html>

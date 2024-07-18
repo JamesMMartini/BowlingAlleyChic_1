@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Bowling Alley Chic: Issue 1</title>
+  <script type="module" crossorigin src="./assets/page3-CogNyuED.js"></script>
+  <link rel="modulepreload" crossorigin href="./assets/VolumeNodeMaterial-CSXjMlTf.js">
+  <link rel="stylesheet" crossorigin href="./assets/page3-BH4gcMqy.css">
+</head>
+<body>
+	<div class="main-body">
+		<div class="header">
+			<h1>BOWLING ALLEY CHIC: ISSUE 1</h1>
+			<h3>WHITE NOISE DITHERING</h3>
+			<a href="page2.html">
+				<button class="header-btn">
+					Page 2: Printers
+				</button>
+			</a>
+            <a href="page4.html">
+				<button class="header-btn">
+					Page 4: Dispersed-Dot
+				</button>
+			</a>
+		</div>
+		<div class="row-left">
+			<div class="sub-row-left">
+				<h2>IT'S EASY</h2>
+
+				<p>When it comes to digital halftoning, the earliest and most basic form is white noise dithering, 
+					where each pixel of the image is compared against a random number. (I'm using the just green value of 
+					each pixel for comparison since I've found that it looks the best).</p>
+				<p>
+					The randomness algorithm is uniformly spread such that the average value is 0.5 (scale of 0 to 1) to 
+					ensure that the image's pixels, while comparing against different values, will overall be compared 
+					against an average luminance of 0.5.
+				</p>
+			</div>
+		</div>
+        <div class="row-right">
+            <div class="sub-row-right">
+                <h2>IT'S UGLY</h2>
+
+				<p>White noise dithering, while a classic form, is generally considered a bad idea because the noise 
+					results in a messy-looking image where a lot of the detail gets lost.</p>
+				<p>
+					In particular, the contrast between tones gets lost because there's no consistency or pattern 
+					behind what tones the pixels are compared against. This regresses all tones towards the mean 
+					of medium gray.
+				</p>
+            </div>
+        </div>
+	</div>
+	<script id="vertexShader" type="x-shader/x-vertex">
+		varying vec2 vUv;
+
+		void main() {
+			vUv = uv;
+
+			gl_Position =   projectionMatrix * 
+							modelViewMatrix * 
+							vec4(position,1.0);
+		}
+	</script>
+	<script id="fragmentShader" type="x-shader/x-fragment">
+		uniform sampler2D texture1;
+
+		varying vec2 vUv;
+
+		void main() {
+			gl_FragColor = texture(texture1, vUv);
+		}
+	</script>
+</body>
+</html>

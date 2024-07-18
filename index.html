@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Bowling Alley Chic: Issue 1</title>
+  <script type="module" crossorigin src="./assets/VolumeNodeMaterial-CSXjMlTf.js"></script>
+  <script type="module" crossorigin src="./assets/QuantizedDither-B5B4gs4j.js"></script>
+  <script type="module" crossorigin src="./assets/index-Dyh3reZX.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/page5style-BbJ8dGq5.css">
+</head>
+<body>
+	<div class="main-body">
+		<div class="header">
+			<h1>BOWLING ALLEY CHIC: ISSUE 1</h1>
+			<h3>PORTLAND HALFTONING</h3>
+			<a href="page2.html">
+				<button class="header-btn">
+					Page 2: Printers
+				</button>
+			</a>
+		</div>
+		<div id="text" class="row-left">
+			<div class="sub-row-left">
+				<h2>I BOUGHT A BOOK</h2>
+
+				<p>
+					In Portland recently, I found a book called "Digital Halftoning" on the graphics programming shelf 
+					at Powell's (the greatest place on Earth). Naturally, I bought it.
+				</p>
+				<p>
+					As such, this zine is about halftoning (and Portland).
+				</p>
+			</div>
+		</div>
+	</div>
+	<script id="vertexShader" type="x-shader/x-vertex">
+		varying vec2 vUv;
+
+		void main() {
+			vUv = uv;
+
+			gl_Position =   projectionMatrix * 
+							modelViewMatrix * 
+							vec4(position,1.0);
+		}
+	</script>
+	<script id="fragmentShader" type="x-shader/x-fragment">
+		uniform sampler2D texture1;
+
+		varying vec2 vUv;
+
+		void main() {
+			gl_FragColor = texture(texture1, vUv);
+		}
+	</script>
+</body>
+</html>
