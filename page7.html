@@ -69,7 +69,8 @@
 
 		void main() {
 			vec4 rgbCol = texture(texture1, vUv);
-			rgbCol.g = 1.0;
+			rgbCol.b = vUv.x;
+			rgbCol.g = vUv.y;
 			rgbCol.a = 1.0;
 			gl_FragColor = rgbCol;
 		}
