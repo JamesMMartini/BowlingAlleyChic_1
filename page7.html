@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<title>Bowling Alley Chic: Issue 1</title>
-  <script type="module" crossorigin src="./assets/page7-DXzLTk6E.js"></script>
+  <script type="module" crossorigin src="./assets/page7-Ccn72miE.js"></script>
   <link rel="modulepreload" crossorigin href="./assets/VolumeNodeMaterial-CSXjMlTf.js">
   <link rel="modulepreload" crossorigin href="./assets/QuantizedDither-B5B4gs4j.js">
   <link rel="stylesheet" crossorigin href="./assets/page5style-BbJ8dGq5.css">
@@ -64,13 +64,17 @@
 	</script>
 	<script id="fragmentShader" type="x-shader/x-fragment">
 		uniform sampler2D texture1;
+		uniform float testFloat;
 
 		varying vec2 vUv;
 
 		void main() {
 			vec4 rgbCol = texture(texture1, vUv);
 			rgbCol.a = 1.0;
-			gl_FragColor = rgbCol;
+
+			vec4 testCol = vec4(testFloat, testFloat, testFloat, 1.0);
+
+			gl_FragColor = testCol;
 		}
 	</script>
 </body>
