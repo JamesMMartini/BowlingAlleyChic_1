@@ -68,11 +68,11 @@
 		varying vec2 vUv;
 
 		void main() {
-			vec2 test = vec2(0,25, 0,5);
+			vec2 test = vec2(0.25, 0.5);
 
 			vec4 rgbCol = texture(texture1, test);
-			rgbCol.b = vUv.x;
-			rgbCol.g = vUv.y;
+			//rgbCol.b = vUv.x;
+			//rgbCol.g = vUv.y;
 			rgbCol.a = 1.0;
 			gl_FragColor = rgbCol;
 		}
